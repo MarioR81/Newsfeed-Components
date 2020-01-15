@@ -87,6 +87,31 @@ const data = [
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
 ];
+function createArticle (title, date){
+  const article = document.createElement('div');
+  const artTitle = document.createElement('h2');
+  const artDate = document.createElement('p')
+  const artP = document.createElement('p');
+  const artP = document.createElement('p');
+  const artP = document.createElement('p');
+  const artBtn = document.createElement('span')
+  //class list
+  article.classList.add('article');
+  artDate.classList.add('date');
+  artBtn.classList.add('expandButton');
+  // append
+article.appendChild(date);
+article.appendChild(expandButton);
+// text content
+h2.textContent = title;
+artDate.textContent = date;
+
+  return article
+};
+const article = document.querySelector('.article');
+data.forEach(d) => {
+  article.appendChild(createArticle(d.title, d.date))
+};
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
@@ -100,6 +125,7 @@ const data = [
   </div>
 
   Hint: You will need to use createElement more than once here!
+
 
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
 
