@@ -8,9 +8,33 @@ let menuItems = [
   'Music',
   'Log Out'
 ];
+const header = document.querySelector('.header');
+function createMenu(array){
+  const burgerMenu = document.createElement('div');
+  const menuList = document.createElement('ul');
+  
+  burgerMenu.classList.add('menu');
+  burgerMenu.appendChild(menuList);
 
+  array.forEach(item => {
+    let menuItem = document.createElement('li');
+    menuItem.textContent = item;
+    menuList.appendChild(menuItem);
+});
+  const menuButton = document.querySelector('.menu-button');
+  menuButton.addEventListener('click', () => {
+    burgerMenu.classList.toggle('menu--open');
+  });
+
+return burgerMenu;
+}
+header.appendChild(createMenu(menuItems));
+
+
+// let domTitle = document.querySelector('h1');
+// domTitle.textContent = siteContent['cta']['h1'];
+// console.log(createMenu);
 /* 
-
   Step 1: Write a function that will create a menu component as seen below:
 
   <div class="menu">
@@ -31,5 +55,4 @@ let menuItems = [
   Step 5: return the menu component.
 
   Step 6: add the menu component to the DOM.
-  
 */

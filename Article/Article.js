@@ -86,7 +86,64 @@ const data = [
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
+  // ,
+  // {
+  //   title: 'test Software Development in 2019',
+  //   date: 'Jan 1st, 2020',
+  //   firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+  //         hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+  //         Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+  //   secondParagraph: `test, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+  //         hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+  //         hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+  //         hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+  //   thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+  //         Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+  //         Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  // }
 ];
+function createArticle (title, date, first, second, third){
+  const articleMain = document.createElement('div');
+  const artTitle = document.createElement('h2');
+  const artDate = document.createElement('p')
+  const artFirst = document.createElement('p');
+  const artSecond = document.createElement('p');
+  const artThird = document.createElement('p');
+  const artBtn = document.createElement('span')
+  //class list
+  articleMain.classList.add('article');
+  artDate.classList.add('date');
+  artBtn.classList.add('expandButton');
+  // append
+  articleMain.append(artTitle);
+  articleMain.append(date);
+  articleMain.append(artFirst);
+  articleMain.append(artSecond);
+  articleMain.append(artThird);
+  articleMain.append(artBtn);
+// text content
+artTitle.textContent = title;
+artDate.textContent = date;
+artFirst.textContent = first;
+artSecond.textContent = second;
+artThird.textContent = third;
+artBtn.textContent = 'Toggle Article';
+
+//step 2
+artBtn.addEventListener('click', event => {
+  articleMain.classList.toggle('article-open');
+});
+//step 3
+  return articleMain
+};
+
+const articles = document.querySelector('.articles');
+// step 4
+data.forEach(d => {
+  articles.append(createArticle(d.title, d.date, d.firstParagraph, d.secondParagraph, d.thirdParagraph))
+})
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
@@ -100,6 +157,7 @@ const data = [
   </div>
 
   Hint: You will need to use createElement more than once here!
+
 
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
 
